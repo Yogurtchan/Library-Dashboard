@@ -1,5 +1,4 @@
 import csv
-# import csvData
 
 def csvRead(fileName):
     review = []
