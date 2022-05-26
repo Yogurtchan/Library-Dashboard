@@ -1,0 +1,13 @@
+body{
+    background-color: #3E8543 !important;
+    height: 100vh !important;
+    justify-content: center !important;
+    align-items: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.indexH1{
+    color: white !important;
+
+}
