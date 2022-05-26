@@ -1,0 +1,3 @@
+bg-dark-green: #234f30
+
+text-white: #f2f2f2

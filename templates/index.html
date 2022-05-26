@@ -12,23 +12,26 @@
     <title class="indexTitle">DLSU-D Library</title>
   </head>
   <body>
-    <section class="">
+    <div class="login-main">
+      <section class="login-header">
+        <p class="login-header__title--sub">DLSU-D Library</p>
+        <p class="login-header__title">Welcome</p>
+      </section>
+      
+      {% if (err != ""): %}
+        <section class="login-err-msg" style="background-color: grey;">
+          <h3>{{err}}</h3>
+        </section>
+      {% endif %}
+      
+      <section class="login-forms">
+        <form class="login-forms__container" action="/dashboard" method="POST">
+          <input class="login-forms__textbox" type="text" placeholder="Username" name="user">
+          <input class="login-forms__textbox" type="text" placeholder="Password" name="pass">
+          <input class="login-forms__btn" type="submit" value="Login" name="Login" onclick="loading()">
+      </form>
+      </section>
 
-    </section>
-    <h1 class="indexH1">Welcome! DLSU-D Library</h1>
-    <br>
-    {% if (err != ""): %}
-      <div style="background-color: grey;">
-        <h3>{{err}}</h3>
-      </div>
-    {% endif %}
-    <br>
-    <form action="/dashboard" method="POST">
-        <input class="form-control" type="text" placeholder="Username" name="user">
-        <br>
-        <input class="form-control" type="text" placeholder="Password" name="pass">
-        <br>
-        <input class="button" type="submit" value="Login" name="Login" onclick="loading()">
-    </form>
+    </div>
   </body>
 </html>
