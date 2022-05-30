@@ -16,5 +16,25 @@
     <button type="button" class="btn btn-success">Borrow Book</button>
     <br>
     <button type="button" class="btn btn-success">Return Book</button>
+    <section>
+      <table>
+        <tr>
+          <th>Company</th>
+          <th>Contact</th>
+          <th>Country</th>
+          <th>Company</th>
+          <th>Contact</th>
+          <th>Country</th>
+        </tr>
+        {% for row in data %}
+        <tr>
+          {% for item in row %}
+          <td>{{item}}</td>
+          {% endfor %}
+        </tr>
+        {% endfor %}
+      </table>
+      <p>{{data}}</p>
+    </section>
   </body>
 </html>
