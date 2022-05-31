@@ -1,7 +1,6 @@
 body{
     background-color: #245730 !important;
     height: 100vh !important;
-    justify-content: center !important;
     align-items: center !important;
     display: flex !important;
     flex-direction: column !important;
@@ -112,4 +111,80 @@ body{
     text-transform: uppercase;
 
     background-color: #e8e8e8;
+}
+
+/* DASHBOARD STYLING */
+.dash-main{
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    height: 100vh;
+}
+
+/* DASH NAVBAR */
+.dash-nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 1rem 5rem;
+    box-shadow: 5px 5px 12px -14px rgba(20, 20, 20, 0.52) !important;
+    color:#f2f2f2;
+
+    z-index: 999;
+    
+}
+
+.dash-nav__title{
+    font-size: 1.5rem;
+    letter-spacing: 0.05rem;
+    font-weight: 200;
+    margin: 0;
+    padding: 0;
+}
+
+.dash-nav__links{
+    display: flex;
+    justify-content: space-between;
+
+    width: 35rem;
+    font-weight: 200;
+    text-transform: uppercase;
+}
+
+.dash-nav__link{
+    cursor: pointer;
+
+    margin: 0;
+}
+
+.dash-body{
+    display: flex;
+    height: 100%;
+
+    background-color: #f2f2f2;
+}
+
+.dash-info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #222324;
+    width: 24rem;
+    padding-top: 3rem;
+    padding-left: 1rem;
+
+    color:#f2f2f2;
+}
+
+.dash-info__welcome{
+    font-weight: 200;
+    text-transform: uppercase;
+    font-size: 2rem;
+}
+
+.dash-data{
+    width: 100%;
+    padding: 3rem;
 }

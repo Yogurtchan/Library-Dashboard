@@ -37,11 +37,14 @@ def reviews():
             print("user not empty")
             print(request.form["user"])
             username = request.form["user"]
+
             # Checks if user input is in csvLogin
             for user in loginData:
                 if user[0] == username:
                     sessionuser = user[0]
                     sessionSN = user[2]
+                    userCollege = user[3]
+                    userCourse = user[4]
                     usernameCorrect = True
                     userIndex = count
                 else:
@@ -76,7 +79,7 @@ def reviews():
                     if sessionSN in row:
                         filteredData.append(row)
                 print(filteredData)
-                return render_template("dashboard.html", name=sessionuser, data=filteredData)
+                return render_template("dashboard.html", name=sessionuser, college=userCollege, course=userCourse, data=filteredData)
             else:
                 err = "Password Incorrect"
                 return redirect(url_for("index", err=err))

@@ -12,29 +12,50 @@
     <title>Hello, world!</title>
   </head>
   <body>
-    <h1>Hello! {{name}}</h1>
-    <button type="button" class="btn btn-success">Borrow Book</button>
-    <br>
-    <button type="button" class="btn btn-success">Return Book</button>
-    <section>
-      <table>
-        <tr>
-          <th>Company</th>
-          <th>Contact</th>
-          <th>Country</th>
-          <th>Company</th>
-          <th>Contact</th>
-          <th>Country</th>
-        </tr>
-        {% for row in data %}
-        <tr>
-          {% for item in row %}
-          <td>{{item}}</td>
-          {% endfor %}
-        </tr>
-        {% endfor %}
-      </table>
-      <p>{{data}}</p>
-    </section>
+    <div class="dash-main">
+
+      <div class="dash-nav">
+        <h2 class="dash-nav__title">AEA-IRC E-Library</h2>
+        <section class="dash-nav__links">
+          <p class="dash-nav__link">About AEA-IRC</p>
+          <p class="dash-nav__link">Browse Books</p>
+          <p class="dash-nav__link">Browse Research</p>
+          <p class="dash-nav__link">LOG OUT</p>
+        </section>
+      </div>
+
+      <div class="dash-body">
+          <section class="dash-info">
+            <h1 class="dash-info__welcome">Hello, {{name.split()[0]}}!</h1>
+            <section class="dash-info__subinfo">
+              <p class="dash-info__sub2info">{{name}}</p>
+              <p class="dash-info__sub2info">{{college}}</p>
+              <p class="dash-info__sub2info">{{course}}</p>
+            </section>
+          </section>
+
+          <section class="dash-data">
+            <h1 class="dash-data__title">Borrow Data</h1>
+            <table class="dash-data__table">
+              <tr class="dash-data__table--row">
+                <th class="dash-data__table--header">Borrow ID</th>
+                <th class="dash-data__table--header">Student No.</th>
+                <th class="dash-data__table--header">Book ISBN</th>
+                <th class="dash-data__table--header">Borrow Date</th>
+                <th class="dash-data__table--header">Due Date</th>
+                <th class="dash-data__table--header">Return Date</th>
+              </tr>
+              {% for row in data %}
+              <tr class="dash-data__table--row">
+                {% for item in row %}
+                <td class="dash-data__table--data">{{item}}</td>
+                {% endfor %}
+              </tr>
+              {% endfor %}
+            </table>
+          </section>
+        </div>
+      </div>
+      
   </body>
 </html>
