@@ -36,23 +36,25 @@
 
           <section class="dash-data">
             <h1 class="dash-data__title">Borrow Data</h1>
-            <table class="dash-data__table">
-              <tr class="dash-data__table--row">
-                <th class="dash-data__table--header">Borrow ID</th>
-                <th class="dash-data__table--header">Student No.</th>
-                <th class="dash-data__table--header">Book ISBN</th>
-                <th class="dash-data__table--header">Borrow Date</th>
-                <th class="dash-data__table--header">Due Date</th>
-                <th class="dash-data__table--header">Return Date</th>
-              </tr>
-              {% for row in data %}
-              <tr class="dash-data__table--row">
-                {% for item in row %}
-                <td class="dash-data__table--data">{{item}}</td>
+            <section class="dash-data__table-cont">
+              <table class="dash-data__table">
+                <tr class="dash-data__table--row">
+                  <th class="dash-data__table--header">Borrow ID</th>
+                  <th class="dash-data__table--header">Student No.</th>
+                  <th class="dash-data__table--header">Book ISBN</th>
+                  <th class="dash-data__table--header">Borrow Date</th>
+                  <th class="dash-data__table--header">Due Date</th>
+                  <th class="dash-data__table--header">Return Date</th>
+                </tr>
+                {% for row in data %}
+                <tr class="dash-data__table--row">
+                  {% for item in row %}
+                  <td class="dash-data__table--data">{{item}}</td>
+                  {% endfor %}
+                </tr>
                 {% endfor %}
-              </tr>
-              {% endfor %}
-            </table>
+              </table>
+            </section>
           </section>
         </div>
       </div>
