@@ -21,13 +21,13 @@
       <section class="login-forms">
         <form class="login-forms__container" action="/dashboard" method="POST">
           <input class="login-forms__textbox" type="text" placeholder="Username" name="user">
-          <input class="login-forms__textbox" type="text" placeholder="Password" name="pass">
+          <input class="login-forms__textbox" type="password" placeholder="Password" name="pass">
           {% if (err != ""): %}
           <section class="login-err-msg">
             <p class="login-err-msg__text">{{err}}</p>
           </section>
           {% endif %}
-          <input class="login-forms__btn" type="submit" value="Login" name="Login" onclick="loading()">
+          <input class="login-forms__btn" type="submit" value="Login" name="Login">
       </form>
       </section>
 

@@ -1,7 +1,6 @@
 body{
     background-color: #245730 !important;
     height: 100vh !important;
-    justify-content: center !important;
     align-items: center !important;
     display: flex !important;
     flex-direction: column !important;
@@ -12,8 +11,10 @@ body{
 .login-main{
     display: flex;
     flex-direction: column;
-
+    justify-content: center;
+    margin-top: -3rem;
     width: 35%;
+    height: 100%;
 }
 
 .login-header{
@@ -113,3 +114,178 @@ body{
 
     background-color: #e8e8e8;
 }
+
+/* DASHBOARD STYLING */
+
+.dash-main{
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    height: 100vh;
+}
+
+/* DASH NAVBAR */
+
+#logo{
+    width: 50px;
+}
+
+.dash-nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 1rem 1.5rem;
+    box-shadow: 15px 15px 12px -14px rgba(20, 20, 20, 0.52) !important;
+    color:#f2f2f2;
+
+    z-index: 999;
+    
+}
+
+.dash-nav__title{
+    font-size: 1.5rem;
+    letter-spacing: 0.05rem;
+    font-weight: 200;
+    margin: 0;
+    margin-left: 2rem;
+    padding: 0;
+}
+
+.dash-nav__links{
+    position: static;
+
+    display: flex;
+    justify-content: space-between;
+
+    width: 35rem;
+    font-weight: 200;
+    text-transform: uppercase;
+
+}
+
+.dash-nav__link{
+    cursor: pointer;
+
+    margin: 0;
+
+    transition: 0.1s;
+
+    color: white;
+
+    text-decoration: none;
+}
+
+.dash-nav__link:hover{
+    margin-top: -2px;
+    border-bottom: 2px solid #e9e9e9;
+    color: white;
+}
+
+.dash-body{
+    display: flex;
+    height: 100%;
+
+    background-color: #f2f2f2;
+}
+
+.dash-info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #222324;
+    width: 24rem;
+    padding: 1rem;
+    padding-top: 3rem;
+
+    color:#f2f2f2;
+    z-index: 1;
+}
+
+.dash-info__welcome{
+    font-weight: 200;
+    text-transform: uppercase;
+    font-size: 2rem;
+}
+
+.dash-info__subinfo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-top: 1rem;
+}
+
+.dash-info__sub2info{
+    margin: 0;
+    font-weight: 200;
+    color: #cdcdcd;
+}
+
+.dash-info__sub2info:nth-child(1){
+    margin: 0;
+    font-size: 1.5rem;
+    color: #f2f2f2;
+}
+
+.dash-data{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 2rem 5rem;
+    padding-right: 8rem;
+}
+
+.dash-data__title{
+    align-self: flex-start;
+    font-size: 1.5rem;
+}
+
+.dash-data__table-cont{
+    width: 100%;
+    max-height: 18rem !important;
+    outline: 1px solid #d2d2d2;
+    border-radius: 10px;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+}
+
+.dash-data__table{
+    width: 100%;
+}
+
+.dash-data__table--row{
+    height: 3em;
+    padding: 1.5rem 1rem !important;
+
+    transition: 0.1s;
+}
+
+.dash-data__table--row:nth-child(2n+3){
+    background-color: #e9e9e9;
+}
+
+.dash-data__table--data:nth-child(1){
+    font-weight: 700;
+}
+
+.dash-data__table--row:hover{
+    background-color: #98e9ae;
+}
+
+.dash-data__table--row:first-child:hover{
+    background-color: #f2f2f2;
+}
+
+
+.dash-data__table--header, .dash-data__table--data{
+    text-align: center;
+    width: min-content;
+}
+
+.dash-data__table--data{
+    font-size: 0.85rem;
+}
+

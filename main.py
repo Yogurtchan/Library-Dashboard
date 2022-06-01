@@ -1,3 +1,5 @@
+from asyncio.windows_events import NULL
+from gettext import NullTranslations
 from flask import Flask, render_template, url_for, request, redirect, session
 from csvReader import csvRead
 
@@ -25,6 +27,9 @@ def reviews():
     userIndex = 0
     count = 0
     loginData = csvRead("csvLogin.csv")
+    mockBorrowData = csvRead("csvData.csv")
+
+    print(mockBorrowData)
     # If user submits login form from index.html
     if request.method == "POST":
         # If user input is not empty
@@ -32,14 +37,19 @@ def reviews():
             print("user not empty")
             print(request.form["user"])
             username = request.form["user"]
+
             # Checks if user input is in csvLogin
             for user in loginData:
                 if user[0] == username:
                     sessionuser = user[0]
+                    sessionSN = user[2]
+                    userCollege = user[3]
+                    userCourse = user[4]
                     usernameCorrect = True
                     userIndex = count
                 else:
                     count += 1
+
             # If password is not empty
             if request.form["pass"] != "":
                 print("pass not empty")
@@ -61,7 +71,15 @@ def reviews():
                 return redirect(url_for("index", err=err))
             # If password is in csvLogin
             if passwordCorrect == True:
-                return render_template("dashboard.html", name=sessionuser)
+                print(mockBorrowData)
+                filteredData = []
+                for row in mockBorrowData:
+                    print(sessionSN)
+                    print(row)
+                    if sessionSN in row:
+                        filteredData.append(row)
+                print(filteredData)
+                return render_template("dashboard.html", name=sessionuser, college=userCollege, course=userCourse, data=filteredData)
             else:
                 err = "Password Incorrect"
                 return redirect(url_for("index", err=err))
@@ -72,6 +90,18 @@ def reviews():
         err = ""
         return redirect(url_for('index', err=err))
     
+    # here
+@app.route("/", methods=["POST", "GET"])
+def dashboard():
+    try:
+        err = request.args['err']
+        # print(err)
+    except:
+        err = ""
+    
+    # print('err=',err)
+    return render_template("index.html", err=err)
+
 if __name__ == "__main__":
     app.run()
 

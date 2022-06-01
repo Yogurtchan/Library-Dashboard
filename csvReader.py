@@ -1,9 +1,9 @@
 import csv
 
 def csvRead(fileName):
-    review = []
+    dashboardData = []
     with open(fileName) as file:
         csvReader = csv.reader(file, delimiter=',')
         for row in csvReader:
-            review.append(row)
-    return review
+            dashboardData.append(row)
+    return dashboardData
