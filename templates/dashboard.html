@@ -16,5 +16,10 @@
     <button type="button" class="btn btn-success">Borrow Book</button>
     <br>
     <button type="button" class="btn btn-success">Return Book</button>
+    <ul>
+      {%for i in range 3%}
+        <li>{{loginData}}</li>
+      {%end for%}
+    </ul>
   </body>
 </html>
