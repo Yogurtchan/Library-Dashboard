@@ -2,6 +2,7 @@ from asyncio.windows_events import NULL
 from gettext import NullTranslations
 from flask import Flask, render_template, url_for, request, redirect, session
 from csvReader import csvRead
+import db_functions
 
 app = Flask(__name__)
 
@@ -71,14 +72,14 @@ def reviews():
                 return redirect(url_for("index", err=err))
             # If password is in csvLogin
             if passwordCorrect == True:
-                print(mockBorrowData)
-                filteredData = []
-                for row in mockBorrowData:
-                    print(sessionSN)
-                    print(row)
-                    if sessionSN in row:
-                        filteredData.append(row)
-                print(filteredData)
+                filteredData = db_functions.dbReadBorrowOrder_studentID(sessionSN)
+                # filteredData = []
+                # for row in mockBorrowData:
+                #     print(sessionSN)
+                #     print(row)
+                #     if sessionSN in row:
+                #         filteredData.append(row)
+                # print(filteredData)
                 return render_template("dashboard.html", name=sessionuser, college=userCollege, course=userCourse, data=filteredData)
             else:
                 err = "Password Incorrect"
