@@ -6,17 +6,17 @@ import db_functions
 
 app = Flask(__name__)
 
-# Index login
-@app.route("/", methods=["POST", "GET"])
-def index():
-    try:
-        err = request.args['err']
-        print(err)
-    except:
-        err = ""
+# # Index login
+# @app.route("/", methods=["POST", "GET"])
+# def index():
+#     try:
+#         err = request.args['err']
+#         print(err)
+#     except:
+#         err = ""
     
-    print('err=',err)
-    return render_template("index.html", err=err)
+#     print('err=',err)
+#     return render_template("index.html", err=err)
 
 
 # Service select

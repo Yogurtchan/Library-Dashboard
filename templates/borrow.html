@@ -37,32 +37,27 @@
             </section>
           </section>
 
-          <section class="dash-data">
-            <h1 class="dash-data__title">Borrow Data</h1>
-            <section class="dash-data__table-cont">
-              <table class="dash-data__table">
-                <tr class="dash-data__table--row">
-                  <th class="dash-data__table--header">Borrow ID</th>
-                  <th class="dash-data__table--header">Student No.</th>
-                  <th class="dash-data__table--header">Book ISBN</th>
-                  <th class="dash-data__table--header">Borrow Date</th>
-                  <th class="dash-data__table--header">Due Date</th>
-                  <th class="dash-data__table--header">Return Date</th>
+          <section class="borrow-book">
+            <h1 class="borrow-book__title">Borrow Book</h1>
+            <section class="borrow-book__table-cont">
+              <table class="borrow-book__table">
+                <tr class="borrow-book__table--row">
+                  <th class="borrow-book__table--header">Book Title</th>
+                  <th class="borrow-book__table--header">ISBN</th>
+                  <th class="borrow-book__table--header">Borrow Date</th>
+                  <th class="borrow-book__table--header">Due Date</th>
                 </tr>
-                {% for row in data %}
-                <tr class="dash-data__table--row">
+                <!-- {% for row in data %}
+                <tr class="borrow-book__table--row">
                   {% for item in row %}
-                  <td class="dash-data__table--data">{{item}}</td>
+                  <td class="borrow-book__table--data">{{item}}</td>
                   {% endfor %}
                 </tr>
-                {% endfor %}
+                {% endfor %} -->
               </table>
             </section>
-          </section>  
-          <section class="btn_select">
-            <a href="templates/borrow.html"><input class="borrow-book__btn" type="button" value="Borrow" name="Borrow Book"></a>
-            <a href="templates/return.html"><input class="return-book__btn" type="button" value="Return" name="Return Book"></a>
           </section>
+          <input class="borrow-book__btn" type="submit" value="Submit" name="Borrow Book">
         </div>
       </div>
       
