@@ -20,9 +20,9 @@
           <h2 class="dash-nav__title">AEA-IRC E-Library</h2>
         </div>
         <section class="dash-nav__links">
-          <p class="dash-nav__link">About AEA-IRC</p>
+          <!-- <p class="dash-nav__link">About AEA-IRC</p>
           <p class="dash-nav__link">Browse Books</p>
-          <p class="dash-nav__link">Browse Research</p>
+          <p class="dash-nav__link">Browse Research</p> -->
           <a class="dash-nav__link" href="/">LOG OUT</a>
         </section>
       </div>
@@ -58,9 +58,87 @@
                 {% endfor %}
               </table>
             </section>
+
+            <section class="dash--btn-select">
+              <input class="borrow-book__btn" type="button" value="Borrow" name="Borrow Book" onclick="showBorrowScrn()">
+              <input class="return-book__btn" type="button" value="Return" name="Return Book" onclick="showReturnScrn()">
+            </section>
+          </section>
+
+          <section class="dash-borrow hidden">
+            <div class="dash-borrow__container">
+              <span class="dash-borrow__title">Borrow Book</span>
+              <section>
+                <form class="borrow-forms__container" action="/dashboard" method="POST">
+                  <div class="borrow-forms__group">
+                    <label class="borrow-forms__label" for="b-title">TITLE</label>
+                    <input class="borrow-forms__textbox" type="text" name="b-title">
+                  </div>
+
+                  <div class="borrow-forms__group">
+                    <label class="borrow-forms__label" for="b-isbn">ISBN</label>
+                    <input class="borrow-forms__textbox" type="text" name="b-isbn">
+                  </div>
+
+                  <div class="borrow-forms__group">
+                    <label class="borrow-forms__label" for="b-title">BORROW DATE</label>
+                    <input class="borrow-forms__textbox" type="text" name="b-borrow">
+                  </div>
+
+                  <div class="borrow-forms__group">
+                    <label class="borrow-forms__label" for="b-return">RETURN DATE</label>
+                    <input class="borrow-forms__textbox" type="text" name="b-return">
+                  </div>
+
+                  <div class="borrow-forms__group">
+                    <label class="borrow-forms__label" for="b-due">DUE DATE</label>
+                    <input class="borrow-forms__textbox" type="text" name="b-due">
+                  </div>
+                  
+                  <button class="borrow-forms__btn">SUBMIT</button>
+                </form>
+              </section>
+            </div>
+          </section>
+
+          <section class="dash-return hidden">
+            <div class="dash-return__container">
+              <span class="dash-return__title">Return Book</span>
+              <section>
+                <form class="return-forms__container" action="/dashboard" method="POST">
+                  <div class="return-forms__group">
+                    <label class="return-forms__label" for="r-title">TITLE</label>
+                    <input class="return-forms__textbox" type="text" name="r-title">
+                  </div>
+
+                  <div class="return-forms__group">
+                    <label class="return-forms__label" for="r-isbn">ISBN</label>
+                    <input class="return-forms__textbox" type="text" name="r-isbn">
+                  </div>
+
+                  <div class="return-forms__group">
+                    <label class="return-forms__label" for="r-title">BORROW DATE</label>
+                    <input class="return-forms__textbox" type="text" name="r-borrow">
+                  </div>
+
+                  <div class="return-forms__group">
+                    <label class="return-forms__label" for="r-return">DUE DATE</label>
+                    <input class="return-forms__textbox" type="text" name="r-return">
+                  </div>
+
+                  <div class="return-forms__group">
+                    <label class="return-forms__label" for="r-due">RETURN DATE</label>
+                    <input class="return-forms__textbox" type="text" name="r-due">
+                  </div>
+                  
+                  <button class="return-forms__btn">SUBMIT</button>
+                </form>
+              </section>
+            </div>
           </section>
         </div>
       </div>
       
   </body>
+  <script src="{{ url_for('static', filename='dashboard.js') }}"></script>
 </html>
