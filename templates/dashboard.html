@@ -20,9 +20,6 @@
           <h2 class="dash-nav__title">AEA-IRC E-Library</h2>
         </div>
         <section class="dash-nav__links">
-          <!-- <p class="dash-nav__link">About AEA-IRC</p>
-          <p class="dash-nav__link">Browse Books</p>
-          <p class="dash-nav__link">Browse Research</p> -->
           <a class="dash-nav__link" href="/">LOG OUT</a>
         </section>
       </div>
@@ -58,84 +55,97 @@
                 {% endfor %}
               </table>
             </section>
+            <br>
+            {% for duebook in due%}
+            <p style="color:red">Book Due: {{duebook[0]}}. Please return by {{duebook[4]}}</p>
+            {% endfor %}
 
             <section class="dash--btn-select">
-              <input class="borrow-book__btn" type="button" value="Borrow" name="Borrow Book" onclick="showBorrowScrn()">
-              <input class="return-book__btn" type="button" value="Return" name="Return Book" onclick="showReturnScrn()">
+              <input class="borrow-book__btn" type="button" value="Scan" name="Scan" onclick=" location.href = '/scan'">
+              <!-- <input class="return-book__btn" type="button" value="Return" name="Return Book" onclick="showReturnScrn()"> -->
             </section>
           </section>
 
-          <section class="dash-borrow hidden">
+          {% if scandata != [] %}
+          <section class="dash-borrow">
+            <form action="/dashboard" method="POST">
             <div class="dash-borrow__container">
-              <span class="dash-borrow__title">Borrow Book</span>
+              <span class="dash-borrow__title">Scanned Book</span>
               <section>
                 <form class="borrow-forms__container" action="/dashboard" method="POST">
                   <div class="borrow-forms__group">
                     <label class="borrow-forms__label" for="b-title">TITLE</label>
-                    <input class="borrow-forms__textbox" type="text" name="b-title">
+                    <input class="borrow-forms__textbox" style="color: grey !important;" type="text" name="b-title" value="{{ scandata[1] }}">
                   </div>
 
                   <div class="borrow-forms__group">
                     <label class="borrow-forms__label" for="b-isbn">ISBN</label>
-                    <input class="borrow-forms__textbox" type="text" name="b-isbn">
+                    <input class="borrow-forms__textbox" style="color: grey !important;" type="text" name="b-isbn" value="{{ scandata[0] }}">
                   </div>
 
-                  <div class="borrow-forms__group">
+                  {% if returnable_book == [] %}
+                  <div class="borrow-forms__group" style="display:flex; flex-direction:row; justify-content: center;">
+                    <div>
+                      <input class="borrow-forms__radio" type="radio" name="b-check" value="b-check1" checked >
+                      <label for="b-check">Borrowing</label>
+                    </div>
+                    <span style="width:30px"></span>
+                    <div>
+                      <input class="borrow-forms__radio" type="radio" name="b-check" value="b-check2" >
+                      <label for="b-check">Returning</label>
+                    </div>
+                  </div>
+                  {% else %}
+                  <div class="borrow-forms__group" style="display:flex; flex-direction:row; justify-content: center;">
+                    <div>
+                      <input class="borrow-forms__radio" type="radio" name="b-check" value="b-check1" >
+                      <label for="b-check">Borrowing</label>
+                    </div>
+                    <span style="width:30px"></span>
+                    <div>
+                      <input class="borrow-forms__radio" type="radio" name="b-check" value="b-check2" checked >
+                      <label for="b-check">Returning</label>
+                    </div>
+                  </div>
+                  {% endif %}
+                  <br>
+
+                  {% if returnable_book == [] %}
+                  <div class="borrow-forms__group" id="borrowbox-b" style="display:block">
                     <label class="borrow-forms__label" for="b-title">BORROW DATE</label>
-                    <input class="borrow-forms__textbox" type="text" name="b-borrow">
+                    <input class="borrow-forms__textbox" style="color: grey !important;" type="text" name="b-borrow" value="{{ scandata[2] }}" >
                   </div>
-
-                  <div class="borrow-forms__group">
-                    <label class="borrow-forms__label" for="b-return">RETURN DATE</label>
-                    <input class="borrow-forms__textbox" type="text" name="b-return">
-                  </div>
-
                   <div class="borrow-forms__group">
                     <label class="borrow-forms__label" for="b-due">DUE DATE</label>
-                    <input class="borrow-forms__textbox" type="text" name="b-due">
+                    <input class="borrow-forms__textbox" style="color: grey !important;" type="text" name="b-due" value="{{ scandata[3] }}" >
                   </div>
+                  {% else %}
+                  <div class="borrow-forms__group" id="borrowbox-r" style="display:block">
+                    <label class="borrow-forms__label" for="b-title">BORROW ID</label>
+                    <input class="borrow-forms__textbox" style="color: grey !important;" type="text" name="b-id" value="{{ returnable_book[0] }}" >
+                  </div>
+                  <div class="borrow-forms__group" id="borrowbox-r" style="display:block">
+                    <label class="borrow-forms__label" for="b-title">BORROW DATE</label>
+                    <input class="borrow-forms__textbox" style="color: grey !important;" type="text" name="b-borrow" value="{{ returnable_book[3] }}" >
+                  </div>
+                  <div class="borrow-forms__group">
+                    <label class="borrow-forms__label" for="b-due">DUE DATE</label>
+                    <input class="borrow-forms__textbox" style="color: grey !important;" type="text" name="b-due" value="{{ returnable_book[4] }}" >
+                  </div>
+                  <div class="borrow-forms__group" id="returnbox">
+                    <label class="borrow-forms__label" for="b-return">RETURN DATE</label>
+                    <input class="borrow-forms__textbox" style="color: grey !important;" type="text" name="b-return" value="{{ scandata[2] }}" >
+                  </div>
+                  {% endif %}
                   
-                  <button class="borrow-forms__btn">SUBMIT</button>
+                  <input class="borrow-forms__btn" type="submit" value="Submit" name="update">
                 </form>
               </section>
             </div>
+            </form>
           </section>
+          {% endif %}
 
-          <section class="dash-return hidden">
-            <div class="dash-return__container">
-              <span class="dash-return__title">Return Book</span>
-              <section>
-                <form class="return-forms__container" action="/dashboard" method="POST">
-                  <div class="return-forms__group">
-                    <label class="return-forms__label" for="r-title">TITLE</label>
-                    <input class="return-forms__textbox" type="text" name="r-title">
-                  </div>
-
-                  <div class="return-forms__group">
-                    <label class="return-forms__label" for="r-isbn">ISBN</label>
-                    <input class="return-forms__textbox" type="text" name="r-isbn">
-                  </div>
-
-                  <div class="return-forms__group">
-                    <label class="return-forms__label" for="r-title">BORROW DATE</label>
-                    <input class="return-forms__textbox" type="text" name="r-borrow">
-                  </div>
-
-                  <div class="return-forms__group">
-                    <label class="return-forms__label" for="r-return">DUE DATE</label>
-                    <input class="return-forms__textbox" type="text" name="r-return">
-                  </div>
-
-                  <div class="return-forms__group">
-                    <label class="return-forms__label" for="r-due">RETURN DATE</label>
-                    <input class="return-forms__textbox" type="text" name="r-due">
-                  </div>
-                  
-                  <button class="return-forms__btn">SUBMIT</button>
-                </form>
-              </section>
-            </div>
-          </section>
         </div>
       </div>
       

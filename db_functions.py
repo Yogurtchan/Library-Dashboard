@@ -9,6 +9,9 @@ import mysql.connector
 from mysql.connector import Error
 import pandas as pd
 from dateutil.relativedelta import relativedelta
+import random
+import string
+from random import shuffle
 
 dbname = "libdb1"
 test_username = "testuser"
@@ -61,7 +64,10 @@ def dbGetUser(username):
     for x in mycursor:
         final.append(x)
 
-    return final[0]
+    try:
+        return final[0]
+    except IndexError:
+        return []
 
 def dbSetUser(user, password, studentID, college, course):
     mycursor.execute(f"""
@@ -121,6 +127,18 @@ def dbCreateReturnOrder(borrowID, date=datetime.now()):
     WHERE borrowID = %s
     """, (date, borrowID))
     db.commit()
+
+def createID():
+    letters = string.ascii_letters
+    lower = ''.join(random.choice(letters) for i in range(4))
+    letters = string.digits
+    digs = ''.join(random.choice(letters) for i in range(2))
+    joint = lower+digs
+    word = list(joint)
+    shuffle(word)
+    return ''.join(word)
+
+    
 
 print(dbReadBorrowOrder_studentID(202230456))
 
